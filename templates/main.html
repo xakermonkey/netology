@@ -7,7 +7,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Multipurpose - SB Admin Pro</title>
+
+        {% block title %}
+        <title>Главная</title>
+        {% endblock %}
+
         <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
         <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
         <link rel="icon" type="image/x-icon" href="{% static 'assets/img/favicon.png' %}" />
@@ -20,7 +24,7 @@
                 <main>
                     <nav class="navbar navbar-marketing navbar-expand-lg bg-transparent navbar-dark fixed-top">
                         <div class="container">
-                            <a class="navbar-brand text-white" href="index.html">SB UI Kit Pro</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
+                            <a class="navbar-brand text-white" href="index.html">DevmodIP. Нетология.</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul class="navbar-nav ml-auto mr-lg-5">
                                     <li class="nav-item"><a class="nav-link" href="index.html">Home </a></li>
@@ -119,13 +123,17 @@
                             </div>
                         </div>
                     </nav>
+
+                    {% block content %}
+
                     <header class="page-header page-header-dark bg-gradient-primary-to-secondary">
                         <div class="page-header-content pt-10">
                             <div class="container">
                                 <div class="row align-items-center">
                                     <div class="col-lg-6" data-aos="fade-up">
-                                        <h1 class="page-header-title">Build your next project faster with SB UI Kit Pro</h1>
-                                        <p class="page-header-text mb-5">Welcome to SB UI Kit Pro, a toolkit for building beautiful web interfaces, created by the developmet team at Start Bootstrap</p>
+                                        <h1 class="page-header-title">Мы находим - Вы выбираете.</h1>
+                                        <h1 class="page-header-title">Ваш партнер в мир успеха.</h1>
+                                        <p class="page-header-text mb-5">Наш цифровой помощник - Ваш персональный выбор. Digital и IT: маркетинг, дизайн, программирование, аналитика, менеджмент.</p>
                                         <a class="btn btn-teal btn-marketing rounded-pill lift lift-sm" href="index.html">View Pages<i class="fas fa-arrow-right ml-1"></i></a><a class="btn btn-link btn-marketing" href="https://docs.startbootstrap.com/sb-ui-kit-pro/quickstart">Documentation</a>
                                     </div>
                                     <div class="col-lg-6 d-none d-lg-block" data-aos="fade-up" data-aos-delay="50"><img class="img-fluid" src="{% static 'assets/img/drawkit/color/drawkit-content-man-color.svg' %}" /></div>
@@ -140,19 +148,24 @@
                         <div class="container">
                             <div class="row text-center">
                                 <div class="col-lg-4 mb-5 mb-lg-0">
-                                    <div class="icon-stack icon-stack-xl bg-gradient-primary-to-secondary text-white mb-4"><i data-feather="layers"></i></div>
-                                    <h3>Built for developers</h3>
-                                    <p class="mb-0">Our customizable, block-based build system makes creating your next project fast and easy!</p>
+{#                                    <div class="icon-stack icon-stack-xl bg-gradient-primary-to-secondary text-white mb-4">#}
+{#                                        <i data-feather="layers"></i>#}
+                                        <img src="{% static 'assets/pict/sec1.png' %}" width="40%">
+{#                                    </div>#}
+                                    <h3>Умения и навыки</h3>
+                                    <p class="mb-0">Пул навыков, которые специалисту необходимо получить для соответствия профессии. Этот пул может включать в себя как soft skills, так и hard skills.</p>
                                 </div>
                                 <div class="col-lg-4 mb-5 mb-lg-0">
-                                    <div class="icon-stack icon-stack-xl bg-gradient-primary-to-secondary text-white mb-4"><i data-feather="smartphone"></i></div>
-                                    <h3>Modern responsive design</h3>
-                                    <p class="mb-0">Featuring carefully crafted, mobile-first components, your end product will function beautifully on any device!</p>
+{#                                    <div class="icon-stack icon-stack-xl bg-gradient-primary-to-secondary text-white mb-4"><i data-feather="smartphone"></i></div>#}
+                                    <img src="{% static 'assets/pict/sec2.png' %}" width="40%">
+                                    <h3>Спектр профессий</h3>
+                                    <p class="mb-0">Конкретные профессии, которые подходят человеку больше всего.</p>
                                 </div>
                                 <div class="col-lg-4">
-                                    <div class="icon-stack icon-stack-xl bg-gradient-primary-to-secondary text-white mb-4"><i data-feather="code"></i></div>
-                                    <h3>Complete documentation</h3>
-                                    <p class="mb-0">All of the layouts, page sections, components, and utilities are fully covered in this products docs.</p>
+{#                                    <div class="icon-stack icon-stack-xl bg-gradient-primary-to-secondary text-white mb-4"><i data-feather="code"></i></div>#}
+                                    <img src="{% static 'assets/pict/sec3.png' %}" width="40%">
+                                    <h3>Дополнительные кластеры</h3>
+                                    <p class="mb-0">Рекомендации могут быть как персонализированными для конкретного человека, так и построенными на основе профиля типичного специалиста.</p>
                                 </div>
                             </div>
                         </div>
@@ -164,12 +177,14 @@
                         <div class="container">
                             <div class="row align-items-center justify-content-center">
                                 <div class="col-md-9 col-lg-6 order-1 order-lg-0" data-aos="fade-right">
-                                    <div class="content-skewed content-skewed-right"><img class="content-skewed-item img-fluid shadow-lg rounded-lg" src="{% static 'assets/img/screenshots/landing-portfolio.jpg' %}" /></div>
+                                    <div class="content-skewed content-skewed-right">
+                                        <img class="content-skewed-item img-fluid shadow-lg rounded-lg" src="{% static 'assets/pict/vibor.png' %}" />
+                                    </div>
                                 </div>
                                 <div class="col-lg-6 order-0 order-lg-1 mb-5 mb-lg-0" data-aos="fade-left">
                                     <div class="mb-5">
-                                        <h2>Here's What You Get</h2>
-                                        <p class="lead">When you purchase this UI Kit, you get access to a robust suite of powerful tools and components to help you build your next landing page quickly and easily.</p>
+                                        <h2>Как сделать выбор?</h2>
+                                        <p class="lead">Наш подход – доставлять клиентам качественную стратегию. Все наши модели имеют разнообразный путь обучения.</p>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6 mb-4">
@@ -427,6 +442,9 @@
                     <hr class="m-0" />
                 </main>
             </div>
+
+            {% endblock %}
+
             <div id="layoutDefault_footer">
                 <footer class="footer pt-10 pb-5 mt-auto bg-light footer-light">
                     <div class="container">
