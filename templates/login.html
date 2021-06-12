@@ -1,0 +1,17 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block title %}Авторизация{% endblock %}
+
+{% block content %}
+
+    <div align="center">
+        <h3>Авторизация</h3>
+        <form method="post" class="mt-5">
+            {% csrf_token %}
+            {{ form }}
+            <button class="btn btn-blue" type="submit">Авторизироваться</button>
+        </form>
+        <a href="{% url 'register' %}">Регистрация</a>
+    </div>
+
+{% endblock %}
