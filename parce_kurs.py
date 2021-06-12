@@ -24,6 +24,7 @@ page = r.get('https://dpo.online/retraining/').text
 page = bs(page, 'lxml')
 
 list_kurses = list()
+
 # category = page.find_all('div', class_='panel panel-default')
 
 # kurses = page.find_all('div', class_='gb-course-card js-course-card')
