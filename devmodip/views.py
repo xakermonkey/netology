@@ -7,3 +7,6 @@ locale.setlocale(locale.LC_ALL, "ru_RU")
 
 def main(request):
     return render(request, 'main.html')
+
+def test(request):
+    return render(request, 'test.html')

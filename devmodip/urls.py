@@ -7,6 +7,7 @@ from django.conf import settings
 
 urlpatterns = [
     path("", main, name='main'),
+    path("test", test, name='test'),
 
 ]
 
