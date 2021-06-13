@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 import locale
 import random
 from .models import *
+from django.http import JsonResponse
 
 locale.setlocale(locale.LC_ALL, "ru_RU")
 
@@ -19,10 +20,6 @@ def get_persondata(request):
 
 
 def main(request):
-
-
-
-
     return render(request, 'main.html')
 
 
@@ -73,38 +70,90 @@ def graph(request):
     else:
         form =CalcForm()
     data = list()
-    with open('prof_list.json', 'r', encoding='unicode-escape') as f:
-        prof = json.load(f)
-    with open('spec_list.json', 'r', encoding='unicode-escape') as f:
-        spec = json.load(f)
-    with open('spisok.json', 'r', encoding='unicode-escape') as f:
-        spisok = json.load(f)
-    with open('kurses_netology.json', 'r', encoding='unicode-escape') as f:
-        kurses = json.load(f)
-    for i in spisok[:20]:
+    for item in Kurses.objects.all():
         data.append({
-            'data': {'id': i['vuz'], 'bg':f'rgb({random.random()*255},{random.random()*255},{random.random()*255})'}
+            'data': {'id': item.name, 'url': item.url,
+                     'bg': f'rgb({random.random() * 255},{random.random() * 255},{random.random() * 255})'}
         })
-    for i in spec[:50]:
-        data.append({
-            'data': {'id': i['name'], 'url': i['url'], 'bg': f'rgb({random.random()*255},{random.random()*255},{random.random()*255})'},
-        })
-    for i in spisok[:20]:
-        for j in spec[:50]:
-            for k in i['spec']:
-                if j['name'] == k['name']:
-                    data.append({
-                        'data': {'id': k['name'] + '_' + j['name'], 'source': i['vuz'], 'target': j['name']}
-                    })
-    for j in prof[:50]:
-        data.append({
-            'data': {'id': j['name'], 'url': j['url'], 'bg': f'rgb({random.random()*255},{random.random()*255},{random.random()*255})'},
-        })
-    for i in spec[:50]:
-        for j in prof[:50]:
-            if j['name'] in i['profession']:
+        if item.vid == 'Нео':
+            for i in Kurses.objects.filter(vid='Про', category=item.category):
                 data.append({
-                    'data': {'id': i['name'] + '_' + j['name'], 'bg': f'rgb({random.random()*255},{random.random()*255},{random.random()*255})', 'source': i['name'], 'target': j['name']}
+                    'data': {'id': item.name + '_' + i.name,
+                             'bg': f'rgb({random.random() * 255},{random.random() * 255},{random.random() * 255})',
+                             'source': item.name, 'target': i.name}
                 })
+        elif item.vid == 'Биз':
+            for i in Kurses.objects.filter(vid='Топ', category=item.category):
+                data.append({
+                    'data': {'id': item.name + '_' + i.name,
+                             'bg': f'rgb({random.random() * 255},{random.random() * 255},{random.random() * 255})',
+                             'source': item.name, 'target': i.name}
+                })
+        if item.category == 'Программирование' or item.name.lower().find('python') != -1 or item.name.lower().find('разработчик') != -1 or item.name.lower().find('программист') != -1:
+            for i in Spec.objects.all():
+                if 'Математика' in i.ege.all() or 'Информатика и ИКТ' in i.ege.all():
+                    data.append({
+                        'data': {'id': item.name + '_' + i.name,
+                                 'bg': f'rgb({random.random() * 255},{random.random() * 255},{random.random() * 255})',
+                                 'source': item.name, 'target': i.name}
+                    })
+        if item.category == 'Бизнес и управление' or item.name.lower().find('бизн') != -1 or item.name.lower().find('менедж') != -1:
+            for i in Spec.objects.all():
+                if 'Обществознание' in i.ege.all():
+                    data.append({
+                        'data': {'id': item.name + '_' + i.name,
+                                 'bg': f'rgb({random.random() * 255},{random.random() * 255},{random.random() * 255})',
+                                 'source': item.name, 'target': i.name}
+                    })
+        if item.category == 'Дизайн и UX' or item.name.lower().find('диза') != -1 or item.name.lower().find('ui') != -1 or item.name.lower().find('ux') != -1:
+            for i in Spec.objects.all():
+                if 'Литература' in i.ege.all() or 'История' in i.ege.all():
+                    data.append({
+                        'data': {'id': item.name + '_' + i.name,
+                                 'bg': f'rgb({random.random() * 255},{random.random() * 255},{random.random() * 255})',
+                                 'source': item.name, 'target': i.name}
+                    })
 
+    for item in Spec.objects.all():
+        data.append({
+            'data': {'id': item.name,'url':item.url,
+                     'bg': f'rgb({random.random() * 255},{random.random() * 255},{random.random() * 255})'}
+        })
+        for prof in item.prof.all():
+            data.append({
+                'data': {'id': item.name + '_' + prof.name,
+                         'bg': f'rgb({random.random() * 255},{random.random() * 255},{random.random() * 255})',
+                         'source': item.name, 'target': prof.name}
+            })
+    for item in Profession.objects.all():
+        data.append({
+            'data': {'id': item.name, 'url':item.url,
+                     'bg': f'rgb({random.random() * 255},{random.random() * 255},{random.random() * 255})'}
+        })
     return render(request, 'graph.html', {'data': data, 'form': form, 'spec':Spec.objects.all(), 'prof':Profession.objects.all(), 'ege':Ege.objects.all()})
+
+
+def math(request):
+    if request.method == 'POST':
+        prof = list()
+        spec = list()
+        pred = list()
+        special = list()
+        ret_prof = list()
+        for item in request.POST['want_prof[]']:
+            prof.append(Profession.objects.get(pk=int(item)))
+        for item in request.POST['want_spec[]']:
+            spec.append(Spec.objects.get(pk=int(item)))
+        for item in request.POST['pred[]']:
+            pred.append(Ege.objects.get(id=int(item)).name)
+        for item in spec:
+            for i in pred:
+                if not i.name in item.ege:
+                    break
+                special.append(item.name)
+        for item in special:
+            for i in item.prof:
+                if i.name in prof:
+                    ret_prof.append(i.name)
+        data = {'ege': pred, 'spec': special, 'prof': ret_prof}
+        return JsonResponse(data)

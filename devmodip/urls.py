@@ -4,14 +4,14 @@ from django.urls import path
 from django.conf.urls.static import static
 from django.conf import settings
 
-
 urlpatterns = [
     path("", main, name='main'),
     path("test", test, name='test'),
-    path('login',user_login,name='login'),
+    path('login', user_login, name='login'),
     path('logout', user_logout, name='logout'),
-    path('register',register,name='register'),
-    path('graph',graph,name='graph')
+    path('register', register, name='register'),
+    path('graph', graph, name='graph'),
+    path('math', math, name='math'),
 
 ]
 
