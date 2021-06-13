@@ -3,15 +3,50 @@
 {% block title %}Авторизация{% endblock %}
 
 {% block content %}
-
-    <div align="center">
-        <h3>Авторизация</h3>
-        <form method="post" class="mt-5">
-            {% csrf_token %}
-            {{ form }}
-            <button class="btn btn-blue" type="submit">Авторизироваться</button>
-        </form>
-        <a href="{% url 'register' %}">Регистрация</a>
-    </div>
-
+    <header class="page-header page-header-dark bg-gradient-primary-to-secondary">
+        <div class="page-header-content pt-10">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 d-none d-lg-block" data-aos="fade-up" data-aos-delay="50"><img
+                            class="img-fluid" src="{% static 'assets/pict/login_pict.png' %}"/></div>
+                    <div align="left" class="col-md-4 mb-4">
+                        <div class="card rounded-lg text-dark">
+                            <div class="card-header py-4">Авторизация</div>
+                            <div class="card-body">
+                                <form method="post">
+                                    {% csrf_token %}
+                                    <div class="form-row">
+                                        <div class="form-group col-md">
+                                            <label class="small text-gray-600" for="leadCapFirstName">Логин:</label>
+                                            <input name="username" class="form-control rounded-pill"
+                                                   id="leadCapFirstName" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md">
+                                            <label class="small text-gray-600" for="leadCapEmail">Пароль:</label>
+                                            <input name="password" class="form-control rounded-pill" id="leadCapEmail"
+                                                   type="password">
+                                        </div>
+                                    </div>
+                                    <div align="center">
+                                        <button class="btn btn-primary btn-marketing btn-block rounded-pill mt-2 col-md-5"
+                                                type="submit">Войти
+                                        </button>
+                                        <a href="{% url 'register' %}">Регистрация</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="svg-border-rounded text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34" preserveAspectRatio="none"
+                 fill="currentColor">
+                <path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0"></path>
+            </svg>
+        </div>
+    </header>
 {% endblock %}
