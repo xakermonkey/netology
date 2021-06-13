@@ -19,3 +19,11 @@ class UserRegisterForm(ModelForm):
     class Meta:
         model = User
         fields = ['username', 'first_name', 'last_name', 'email']
+
+class CalcForm(forms.Form):
+    prof_predmet = forms.ModelMultipleChoiceField(queryset=Ege.objects.all(), widget=forms.CheckboxSelectMultiple)
+    hobbi = forms.CharField(label='Ваше хобби', widget=forms.TextInput(attrs={'class': 'form-control'}))
+    want_prof = forms.ModelMultipleChoiceField(queryset=Profession.objects.all(), widget=forms.CheckboxSelectMultiple)
+    want_spec = forms.ModelMultipleChoiceField(queryset=Spec.objects.all(), widget=forms.CheckboxSelectMultiple)
+
+

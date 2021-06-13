@@ -4,12 +4,136 @@
 
 
 {% block content %}
-    <div class="d-flex">
-        <div id="cy" align="left" class="btn-primary"
-             style="border-radius: 5%; width: 40%; height: 500px; margin: 5% 3% 10% 2%"></div>
-        <div align="right" class="bg-light"
-             style="border-radius: 5%; width: 40%; height: 500px; margin: 5% 2% 10% 3%"></div>
-    </div>
+    <header class="page-header page-header-dark bg-gradient-primary-to-secondary">
+        <div class="page-header-content pt-10" style="padding-top: 1rem !important;">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div id="cy" style="width: 500px; height: 500px"></div>
+                    <div align="left" class="col-md-6 mb-4">
+                        <div class="card rounded-lg text-dark">
+                            <div class="card-header py-4">Регистрация</div>
+                            <div class="card-body">
+                                <form action="">
+                                    {% csrf_token %}
+                                    <label>Профилирующий предмет</label>
+                                    <div class="overflow-auto" style="height: 200px">
+                                        <ul id="id_prof_predmet">
+                                            {% for item in ege %}
+                                                <li>
+                                                    <label for="id_prof_predmet_{{ item.id }}">
+                                                        <input type="checkbox" name="prof_predmet" value="{{ item.id }}"
+                                                               id="id_prof_predmet_{{ item.id }}"> {{ item.name }}
+                                                    </label>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+
+                                    <label for="id_hobbi">Ваше хобби</label>
+
+                                    <input type="text" name="hobbi" class="form-control" required="" id="id_hobbi">
+
+                                    <label>Желаемая профессия</label>
+                                    <div class="overflow-auto" style="height: 200px">
+                                        <ul id="id_want_prof">
+                                            {% for item in prof %}
+                                                <li>
+                                                    <label for="id_want_prof_{{ item.id }}"><input type="checkbox"
+                                                                                                   name="want_prof"
+                                                                                                   value="{{ item.id }}"
+                                                                                                   id="id_want_prof_{{ item.id }}"> {{ item.name }}
+                                                    </label>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+
+                                    <label>Желаемая специальность</label>
+                                    <div class="overflow-auto" style="height: 200px">
+                                        <ul id="id_want_spec">
+                                            {% for item in spec %}
+                                                <li>
+                                                    <label for="id_want_spec_{{ item.id }}"><input type="checkbox"
+                                                                                                   name="want_spec"
+                                                                                                   value="{{ item.id }}"
+                                                                                                   id="id_want_prof_{{ item.id }}"> {{ item.name }}
+                                                    </label>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    {#                    <div class="col-lg-6 d-none d-lg-block" data-aos="fade-up" data-aos-delay="50"><img#}
+                    {#                            class="img-fluid" src="{% static 'assets/pict/reg_pict.png' %}"/></div>#}
+                </div>
+            </div>
+        </div>
+        <div class="svg-border-rounded text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34" preserveAspectRatio="none"
+                 fill="currentColor">
+                <path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0"></path>
+            </svg>
+        </div>
+    </header>
+
+
+{#    <div class="d-flex">#}
+{#        <div id="cy" align="left" class="btn-primary"#}
+{#             style="border-radius: 5%; width: 40%; height: 500px; margin: 5% 3% 10% 2%"></div>#}
+{#        <div align="right" class="bg-light"#}
+{#             style="border-radius: 5%; width: 40%; height: 500px; margin: 5% 2% 10% 3%">#}
+{##}
+{#        </div>#}
+{#    </div>#}
+{##}
+{##}
+{#    <form action="">#}
+{#        {% csrf_token %}#}
+{#        <label>Профилирующий предмет</label>#}
+{#        <div class="overflow-auto" style="height: 200px">#}
+{#            <ul id="id_prof_predmet">#}
+{#                {% for item in ege %}#}
+{#                <li>#}
+{#                    <label for="id_prof_predmet_{{ item.id }}">#}
+{#                        <input type="checkbox" name="prof_predmet" value="{{ item.id }}" id="id_prof_predmet_{{ item.id }}"> {{ item.name }}</label>#}
+{#                </li>#}
+{#                {% endfor %}#}
+{#            </ul>#}
+{#        </div>#}
+{##}
+{#<label for="id_hobbi">Ваше хобби</label>#}
+{##}
+{#        <input type="text" name="hobbi" class="form-control" required="" id="id_hobbi">#}
+{##}
+{#        <label>Желаемая профессия</label>#}
+{#        <div class="overflow-auto" style="height: 200px">#}
+{#            <ul id="id_want_prof">#}
+{#                {% for item in prof %}#}
+{#                <li>#}
+{#                    <label for="id_want_prof_{{ item.id }}"><input type="checkbox" name="want_prof" value="{{ item.id }}" id="id_want_prof_{{ item.id }}"> {{ item.name }}</label>#}
+{#                </li>#}
+{#                {% endfor %}#}
+{#            </ul>#}
+{#        </div>#}
+{##}
+{#    <label>Желаемая специальность</label>#}
+{#        <div class="overflow-auto" style="height: 200px">#}
+{#            <ul id="id_want_spec">#}
+{#                {% for item in spec %}#}
+{#                <li>#}
+{#                    <label for="id_want_spec_{{ item.id }}"><input type="checkbox" name="want_spec" value="{{ item.id }}" id="id_want_prof_{{ item.id }}"> {{ item.name }}</label>#}
+{#                </li>#}
+{#                {% endfor %}#}
+{#            </ul>#}
+{#        </div>#}
+{#    </form>#}
+
+
+
+
 
 {% endblock %}
 
@@ -26,7 +150,7 @@
                     selector: 'node',
                     style: {
                         'background-color': 'data(bg)',
-                        'shape': 'pentagon'
+                        'shape': 'star'
                     }
                 },
                     {
@@ -41,7 +165,8 @@
                     }
                 ],
                 layout: {
-                    name: 'grid'
+                    name: 'cose',
+                    fit:false
                 },
             });
 

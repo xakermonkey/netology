@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.forms.models import model_to_dict
 from .forms import *
 from .forms import *
 import json
@@ -9,6 +10,12 @@ import random
 from .models import *
 
 locale.setlocale(locale.LC_ALL, "ru_RU")
+
+def get_persondata(request):
+    data = PersonData.objects.filter(owner=request.user).first()
+    if not data:
+        data = PersonData.objects.create(owner=request.user)
+    return data
 
 
 def main(request):
@@ -59,8 +66,15 @@ def register(request):
 
 
 def graph(request):
-    data = list()
 
+    if request.user.is_authenticated:
+        persondata = get_persondata(request)
+        form = CalcForm({'prof_predmet': persondata.prof_predmet, 'hobbi': persondata.hobbi, 'want_prof': persondata.want_prof, 'want_spec': persondata.want_spec})
+    else:
+        form =CalcForm()
+    data = list()
+    with open('prof_list.json', 'r', encoding='unicode-escape') as f:
+        prof = json.load(f)
     with open('spec_list.json', 'r', encoding='unicode-escape') as f:
         spec = json.load(f)
     with open('spisok.json', 'r', encoding='unicode-escape') as f:
@@ -93,4 +107,4 @@ def graph(request):
                     'data': {'id': i['name'] + '_' + j['name'], 'bg': f'rgb({random.random()*255},{random.random()*255},{random.random()*255})', 'source': i['name'], 'target': j['name']}
                 })
 
-    return render(request, 'graph.html', {'data': data})
+    return render(request, 'graph.html', {'data': data, 'form': form, 'spec':Spec.objects.all(), 'prof':Profession.objects.all(), 'ege':Ege.objects.all()})
