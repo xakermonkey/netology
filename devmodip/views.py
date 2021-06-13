@@ -18,12 +18,28 @@ def get_persondata(request):
         data = PersonData.objects.create(owner=request.user)
     return data
 
+def get_dostizh(request):
+    data = Portfolio.objects.filter(owner=request.user).first()
+    if not data:
+        data = Portfolio.objects.create(owner=request.user)
+    return data
+
+def get_plan(request):
+    data = LearnPlan.objects.filter(owner=request.user).first()
+    if not data:
+        data = LearnPlan.objects.create(owner=request.user)
+    return data
+
 
 def main(request):
     return render(request, 'main.html')
 
 def lk(request):
-    return render(request, 'lk.html')
+    data = get_persondata(request)
+    dostizh = get_dostizh(request)
+    plan = get_plan(request)
+    return render(request, 'lk.html', {'data': data, 'dost': dostizh, 'plan':plan})
+
 def about(request):
     return render(request, 'about.html')
 def docs(request):

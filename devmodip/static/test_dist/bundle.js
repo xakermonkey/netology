@@ -12054,16 +12054,16 @@ Licensed under The MIT License (http://opensource.org/licenses/MIT)
                         Strength: 5,
                         selected: !1,
                         cytoscape_alias_list: ["Aarauer Bierdeckel"],
-                        canonicalName: "Aarauer Bierdeckel",
+                        canonicalName: "Aarauer Bierdeckel222",
                         //Milk: "Raw cow's milk",
                         Synonym: "Kuentener",
                         Quality: 90,
                         Type: "Semi-soft",
                         //SUID: 430,
                         NodeType: "Cheese",
-                        name: "Aarauer Bierdeckel",
+                        name: "Aarauer Bierdeckel111",
                         Country: "Switzerland",
-                        shared_name: "Aarauer Bierdeckel"
+                        shared_name: "Aarauer Bierdeckel333"
                     }, position: {x: 4491.9853515625, y: 4520.1904296875}, selected: !1
                 }, {
                     data: {

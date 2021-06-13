@@ -15,8 +15,14 @@
         <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
         <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
         <link rel="icon" type="image/x-icon" href="{% static 'assets/img/favicon.png' %}" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
         <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.24.1/feather.min.js" crossorigin="anonymous"></script>
+        <style type="text/css">
+            li {
+                list-style-type: none;
+            }
+        </style>
         {% block style %} {% endblock %}
     </head>
 
@@ -33,41 +39,41 @@
                                 <ul class="navbar-nav ml-auto mr-lg-5">
                                     <li class="nav-item"><a class="nav-link" href="{% url 'main' %}">Главная </a></li>
                                     <li class="nav-item dropdown dropdown-xl no-caret">
-                                        <a class="nav-link dropdown-toggle" id="navbarDropdownDemos" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Каталог курсов<i class="fas fa-chevron-right dropdown-arrow"></i></a>
-                                        <div class="dropdown-menu dropdown-menu-right animated--fade-in-up mr-lg-n15" aria-labelledby="navbarDropdownDemos">
-                                            <div class="row no-gutters">
-                                                <div class="col-lg-5 p-lg-3 bg-img-cover overlay overlay-primary overlay-70 d-none d-lg-block" style='background-image: url("https://source.unsplash.com/mqO0Rf-PUMs/500x350")'>
-                                                    <div class="d-flex h-100 w-100 align-items-center justify-content-center">
-                                                        <div class="text-white text-center z-1">
-                                                            <div class="mb-3">Multipurpose landing pages for a variety of projects.</div>
-                                                            <a class="btn btn-white btn-sm text-primary rounded-pill" href="#">View All</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-7 p-lg-5">
-                                                    <div class="row">
-                                                        <div class="col-lg-6">
-                                                            <h6 class="dropdown-header text-primary">Applications</h6>
-                                                            <a class="dropdown-item" href="landing-app-mobile.html">Mobile App</a><a class="dropdown-item" href="landing-app-desktop.html">Desktop App</a>
-                                                            <div class="dropdown-divider border-0"></div>
-                                                            <h6 class="dropdown-header text-primary">Business</h6>
-                                                            <a class="dropdown-item" href="landing-multipurpose.html">Multipurpose</a><a class="dropdown-item" href="landing-agency.html">Agency</a><a class="dropdown-item" href="landing-press.html">Press</a><a class="dropdown-item" href="landing-directory.html">Directory</a><a class="dropdown-item" href="landing-rental.html">Rental</a><a class="dropdown-item" href="landing-real-estate.html">Real Estate</a><a class="dropdown-item" href="landing-classifieds.html">Classifieds</a>
-                                                            <div class="dropdown-divider border-0"></div>
-                                                            <h6 class="dropdown-header text-primary">Lead Generation</h6>
-                                                            <a class="dropdown-item" href="landing-lead-capture.html">Lead Capture</a>
-                                                            <div class="dropdown-divider border-0 d-lg-none"></div>
-                                                        </div>
-                                                        <div class="col-lg-6">
-                                                            <h6 class="dropdown-header text-primary">Personal</h6>
-                                                            <a class="dropdown-item" href="landing-resume.html">Resume</a><a class="dropdown-item" href="landing-portfolio.html">Portfolio</a>
-                                                            <div class="dropdown-divider border-0"></div>
-                                                            <h6 class="dropdown-header text-primary">Header Styles</h6>
-                                                            <a class="dropdown-item" href="header-basic.html">Basic</a><a class="dropdown-item" href="header-basic-signup.html">Basic (Signup)</a><a class="dropdown-item" href="header-graphic.html">Graphic</a><a class="dropdown-item" href="header-graphic-signup.html">Graphic (Signup)</a><a class="dropdown-item" href="header-inner-page.html">Inner Page</a><a class="dropdown-item" href="header-nav-only.html">Nav Only</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <a class="nav-link dropdown-toggle" id="navbarDropdownDemos" href="https://netology.ru/navigation" target="_blank" role="button" data-toggle="" aria-haspopup="true" aria-expanded="false">Каталог курсов<i class="fas fa-chevron-right dropdown-arrow"></i></a>
+{#                                        <div class="dropdown-menu dropdown-menu-right animated--fade-in-up mr-lg-n15" aria-labelledby="navbarDropdownDemos">#}
+{#                                            <div class="row no-gutters">#}
+{#                                                <div class="col-lg-5 p-lg-3 bg-img-cover overlay overlay-primary overlay-70 d-none d-lg-block" style='background-image: url("https://source.unsplash.com/mqO0Rf-PUMs/500x350")'>#}
+{#                                                    <div class="d-flex h-100 w-100 align-items-center justify-content-center">#}
+{#                                                        <div class="text-white text-center z-1">#}
+{#                                                            <div class="mb-3">Multipurpose landing pages for a variety of projects.</div>#}
+{#                                                            <a class="btn btn-white btn-sm text-primary rounded-pill" href="#">View All</a>#}
+{#                                                        </div>#}
+{#                                                    </div>#}
+{#                                                </div>#}
+{#                                                <div class="col-lg-7 p-lg-5">#}
+{#                                                    <div class="row">#}
+{#                                                        <div class="col-lg-6">#}
+{#                                                            <h6 class="dropdown-header text-primary">Applications</h6>#}
+{#                                                            <a class="dropdown-item" href="landing-app-mobile.html">Mobile App</a><a class="dropdown-item" href="landing-app-desktop.html">Desktop App</a>#}
+{#                                                            <div class="dropdown-divider border-0"></div>#}
+{#                                                            <h6 class="dropdown-header text-primary">Business</h6>#}
+{#                                                            <a class="dropdown-item" href="landing-multipurpose.html">Multipurpose</a><a class="dropdown-item" href="landing-agency.html">Agency</a><a class="dropdown-item" href="landing-press.html">Press</a><a class="dropdown-item" href="landing-directory.html">Directory</a><a class="dropdown-item" href="landing-rental.html">Rental</a><a class="dropdown-item" href="landing-real-estate.html">Real Estate</a><a class="dropdown-item" href="landing-classifieds.html">Classifieds</a>#}
+{#                                                            <div class="dropdown-divider border-0"></div>#}
+{#                                                            <h6 class="dropdown-header text-primary">Lead Generation</h6>#}
+{#                                                            <a class="dropdown-item" href="landing-lead-capture.html">Lead Capture</a>#}
+{#                                                            <div class="dropdown-divider border-0 d-lg-none"></div>#}
+{#                                                        </div>#}
+{#                                                        <div class="col-lg-6">#}
+{#                                                            <h6 class="dropdown-header text-primary">Personal</h6>#}
+{#                                                            <a class="dropdown-item" href="landing-resume.html">Resume</a><a class="dropdown-item" href="landing-portfolio.html">Portfolio</a>#}
+{#                                                            <div class="dropdown-divider border-0"></div>#}
+{#                                                            <h6 class="dropdown-header text-primary">Header Styles</h6>#}
+{#                                                            <a class="dropdown-item" href="header-basic.html">Basic</a><a class="dropdown-item" href="header-basic-signup.html">Basic (Signup)</a><a class="dropdown-item" href="header-graphic.html">Graphic</a><a class="dropdown-item" href="header-graphic-signup.html">Graphic (Signup)</a><a class="dropdown-item" href="header-inner-page.html">Inner Page</a><a class="dropdown-item" href="header-nav-only.html">Nav Only</a>#}
+{#                                                        </div>#}
+{#                                                    </div>#}
+{#                                                </div>#}
+{#                                            </div>#}
+{#                                        </div>#}
                                     </li>
                                     <li class="nav-item dropdown dropdown-lg no-caret">
                                         <a class="nav-link dropdown-toggle" id="navbarDropdownPages" href="{% url 'about' %}" role="button" data-toggle="" aria-haspopup="true" aria-expanded="false">О нас<i class="fas fa-chevron-right dropdown-arrow"></i></a>
@@ -543,9 +549,10 @@
                             <div class="col-lg-3">
                                 <div class="footer-brand">DevmodIP. Нетология.</div>
                                 <div class="mb-3">Ваш партнер в мир успеха</div>
-                                <div class="icon-list-social mb-5">
+                                <div class="icon-list-social mb-1">
                                     <a class="icon-list-social-link" href="javascript:void(0);"><i class="fab fa-instagram"></i></a><a class="icon-list-social-link" href="javascript:void(0);"><i class="fab fa-facebook"></i></a><a class="icon-list-social-link" href="javascript:void(0);"><i class="fab fa-github"></i></a><a class="icon-list-social-link" href="javascript:void(0);"><i class="fab fa-twitter"></i></a>
                                 </div>
+                                <img src="{% static 'assets/pict/st_logo.png' %}" style="width: 100%">
                             </div>
                             <div class="col-lg-9">
                                 <div class="row">
