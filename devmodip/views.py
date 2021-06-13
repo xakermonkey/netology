@@ -22,6 +22,13 @@ def get_persondata(request):
 def main(request):
     return render(request, 'main.html')
 
+def lk(request):
+    return render(request, 'lk.html')
+def about(request):
+    return render(request, 'about.html')
+def docs(request):
+    return render(request, 'docs.html')
+
 
 def test(request):
     return render(request, 'test.html')
