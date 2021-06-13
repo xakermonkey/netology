@@ -6,4 +6,8 @@ import numpy as np
 
 with open('retraining.json', 'r') as fh:
     data = json.load(fh)
-print(data)
+for i in data:
+    for j in i:
+        if j != 'name':
+            for indx,k in enumerate(i[j]):
+                print(k)

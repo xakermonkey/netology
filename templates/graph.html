@@ -1,14 +1,64 @@
 {% extends 'main.html' %}
-
+{% load static %}
 {% block title %}Подбор учебного плана{% endblock %}
 
 
 {% block content %}
+    <div class="d-flex">
+        <div id="cy" align="left" class="btn-primary"
+             style="border-radius: 5%; width: 40%; height: 500px; margin: 5% 3% 10% 2%"></div>
+        <div align="right" class="bg-light"
+             style="border-radius: 5%; width: 40%; height: 500px; margin: 5% 2% 10% 3%"></div>
+    </div>
 
+{% endblock %}
 
+{% block script %}
 
+    <script>
+        jQuery(function () {
+            var cy = cytoscape({
+                container: $('#cy'),
 
+                elements: {{ data|safe }},
 
+                style: [{
+                    selector: 'node',
+                    style: {
+                        'background-color': 'data(bg)',
+                        'shape': 'pentagon'
+                    }
+                },
+                    {
+                        selector: 'edge',
+                        style: {
+                            'width': 3,
+                            'line-color': 'data(bg)',
+                            'target-arrow-color': 'data(bg)',
+                            'target-arrow-shape': 'triangle',
+                            'curve-style': 'bezier'
+                        }
+                    }
+                ],
+                layout: {
+                    name: 'grid'
+                },
+            });
 
-    
+            cy.on('click', 'node', function (evt) {
+                var node = evt.target;
+                if (node.style().label !== '') {
+                    node.style({
+                        label: ''
+                    })
+                } else {
+                    node.style({
+                        label: node.id()
+                    })
+                }
+                console.log(node);
+            })
+        });
+    </script>
+
 {% endblock %}

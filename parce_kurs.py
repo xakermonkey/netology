@@ -20,24 +20,20 @@ from time import sleep
 #     return kurs
 
 
-page = r.get('https://dpo.online/retraining/').text
+page = r.get('https://skillfactory.ru/catalogue').text
 page = bs(page, 'lxml')
 
 list_kurses = list()
 
-# category = page.find_all('div', class_='panel panel-default')
+category = page.find('div', class_='t951__grid-cont')
+category = category.find_all('div', class_='js-product')
 
 # kurses = page.find_all('div', class_='gb-course-card js-course-card')
-# for item in category:
-#     retraining = dict()
-#     retraining['name'] = item.find('h4', class_='panel-title').text
-#     for i in item.find_all('li', class_='cat-item'):
-#         if i.find('ul'):
-#             for j in i.find_all('li'):
-#                 retraining[j.find('a').text] = get_retraining(j.find('a').attrs['href'])
-#         else:
-#             retraining[i.find('a').text] = get_retraining(i.find('a').attrs['href'])
-#     list_kurses.append(retraining)
+for item in category:
+    retraining = dict()
+    retraining['name'] = item.find('div', class_='js-store-prod-name js-product-name t-store__card__title t-name t-name_md').text
+    retraining['url'] = item.find('a')['href']
+    list_kurses.append(retraining)
 
 
 # for item in kurses:
@@ -50,5 +46,5 @@ list_kurses = list()
 #         kurs['image'] = ''
 #     list_kurses.append(kurs)
 
-with open('skillbox.json', 'w') as f:
+with open('skillfactory.json', 'w') as f:
     json.dump(list_kurses, f)

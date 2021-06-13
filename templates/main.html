@@ -20,7 +20,7 @@
         {% block style %} {% endblock %}
     </head>
 
-    
+
 
     <body>
         <div id="layoutDefault">
@@ -28,10 +28,10 @@
                 <main>
                     <nav class="navbar navbar-marketing navbar-expand-lg bg-transparent navbar-dark fixed-top">
                         <div class="container">
-                            <a class="navbar-brand text-white" href="index.html">DevmodIP. Нетология.</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
+                            <a class="navbar-brand text-white" href="{% url 'main' %}">DevmodIP. Нетология.</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul class="navbar-nav ml-auto mr-lg-5">
-                                    <li class="nav-item"><a class="nav-link" href="index.html">Главная </a></li>
+                                    <li class="nav-item"><a class="nav-link" href="{% url 'main' %}">Главная </a></li>
                                     <li class="nav-item dropdown dropdown-xl no-caret">
                                         <a class="nav-link dropdown-toggle" id="navbarDropdownDemos" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Landings<i class="fas fa-chevron-right dropdown-arrow"></i></a>
                                         <div class="dropdown-menu dropdown-menu-right animated--fade-in-up mr-lg-n15" aria-labelledby="navbarDropdownDemos">
@@ -40,7 +40,7 @@
                                                     <div class="d-flex h-100 w-100 align-items-center justify-content-center">
                                                         <div class="text-white text-center z-1">
                                                             <div class="mb-3">Multipurpose landing pages for a variety of projects.</div>
-                                                            <a class="btn btn-white btn-sm text-primary rounded-pill" href="index.html">View All</a>
+                                                            <a class="btn btn-white btn-sm text-primary rounded-pill" href="#">View All</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -518,7 +518,7 @@
                                     <h4>Еще не присоединились?</h4>
                                     <p class="lead mb-5 mb-lg-0 text-gray-500">Зарегистрируйтесь прямо сейчас!</p>
                                 </div>
-                                <div class="col-lg-6 text-lg-right"><a class="btn btn-primary btn-marketing rounded-pill mr-3 my-2 lift lift-sm" href="#!">Создать аккаунт</a><a class="btn btn-white btn-marketing rounded-pill my-2 lift lift-sm" href="#!">Войти</a></div>
+                                <div class="col-lg-6 text-lg-right"><a class="btn btn-primary btn-marketing rounded-pill mr-3 my-2 lift lift-sm" href="{% url 'register' %}">Создать аккаунт</a><a class="btn btn-white btn-marketing rounded-pill my-2 lift lift-sm" href="{% url 'login' %}">Войти</a></div>
                             </div>
                         </div>
                     </section>
@@ -600,6 +600,9 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="{% static 'js/scripts.js' %}"></script>
         <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sigma.js/2.0.0-beta5/sigma.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.19.0/cytoscape.min.js"></script>
+        <script src="http://marvl.infotech.monash.edu/webcola/cola.min.js"></script>
         <script>
             AOS.init({
                 disable: 'mobile',
@@ -608,4 +611,6 @@
             });
         </script>
     </body>
+{% block script %}
+{% endblock %}
 </html>
