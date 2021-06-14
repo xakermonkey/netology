@@ -285,11 +285,19 @@ def math(request):
 def create(request):
     if request.method == 'POST':
         plan = get_plan(request)
-        plan.kurses.add(Kurses.objects.get(name='Цифровой маркетинг'))
-        plan.kurses.add(Kurses.objects.get(name='DataOps-инженер'))
-        plan.spec.add(Spec.objects.get(name='Информатика и вычислительная техника'))
-        plan.spec.add(Spec.objects.get(name='Информационные системы и технологии'))
-        plan.prof.add(Profession.objects.get(name='Специалист по системам безопасности'))
+        k = 0
+        s = 0
+        p = 0
+        for item in request.POST[1::3]:
+            if item in Kurses.objects.all() and not plan.kurses.filter(name=item) and k < 5:
+                k += 1
+                plan.kurses.add(Kurses.objects.get(name=item))
+            if item in Spec.objects.all() and not plan.spec.filter(name=item) and s < 5:
+                s += 1
+                plan.spec.add(Spec.objects.get(name=item))
+            if item in Profession.objects.all() and not plan.prof.filter(name=item) and p < 5:
+                p += 1
+                plan.prof.add(Profession.objects.get(name=item))
         plan.save()
         if request.user.is_authenticated:
             data = {'ok': True}

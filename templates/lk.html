@@ -94,15 +94,15 @@
                         <div class="container">
                             <h2 class="mb-4">Мои курсы</h2>
                             <div class="card-columns card-columns-portfolio">
-                                {% for item in plan.kurses.all %}
+                                {% for item in plan.kurses.all|slice:":3" %}
                                 <a class="card card-portfolio" target="_blank" href="{{ item.url }}"><img class="card-img-top bg-gray-100" height="300px" width="400px" src="{{ item.img }}" alt="...">
                                     <div class="card-body"><div class="card-title">{% if item in dost.kurses.all %}<i style="color: green" class="bi bi-check-circle"></i>{% endif %}{{ item.name }}</div></div></a>
                                 {% endfor %}
-                                {% for item in plan.prof.all %}
+                                {% for item in plan.prof.all|slice:":3" %}
                                 <a class="card card-portfolio" target="_blank" href="{{ item.url }}"><img class="card-img-top bg-gray-100" height="300px" width="400px" src="{% static 'assets/pict/lk_prof.png' %}" alt="...">
                                     <div class="card-body"><div class="card-title">{% if item in dost.prof.all %}<i style="color: green" class="bi bi-check-circle"></i>{% endif %}{{ item.name }}</div></div></a>
                                 {% endfor %}
-                                {% for item in plan.spec.all %}
+                                {% for item in plan.spec.all|slice:":2" %}
                                 <a class="card card-portfolio" target="_blank" href="{{ item.url }}"><img class="card-img-top bg-gray-100" height="300px" width="400px" src="{% static 'assets/pict/lk_spec.png' %}" alt="...">
                                     <div class="card-body"><div class="card-title">{% if item in dost.spec.all %}<i style="color: green" class="bi bi-check-circle"></i>{% endif %}{{ item.name }}</div></div></a>
                                 {% endfor %}

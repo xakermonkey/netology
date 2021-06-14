@@ -227,14 +227,16 @@
                         })
                         $('#create').show()
                         $('#create').click(function () {
-                            let data = {'csrfmiddlewaretoken': $('input[type="hidden"]').val()};
-                            cy.nodes().each(function (el) {
-                                console.log(el);
-                            })
+                            let num = {'csrfmiddlewaretoken': $('input[type="hidden"]').val()};
+                            for (var item in data['data']){
+                                if (!data['data'][item]['data']['source']) {
+                                    num[data['data'][item]['data']['id']] = data['data'][item]['data']['id'];
+                                }
+                            }
                             $.ajax({
                                 url:'create_plan/',
                                 type:'POST',
-                                data:data,
+                                data:num,
                                 success: function (data) {
                                         if (data['ok']) {
                                             return location.href = location.origin + '/lk';
