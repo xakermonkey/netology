@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+
+    android:layout_margin="5dp"
+    android:id="@+id/lin_l_model_of_result_main"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+      android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+         android:layout_margin="5dp"
+        android:orientation="vertical"
+       >
+
+
+
+<RelativeLayout
+    android:layout_width="@dimen/size_of_cirle_img_for_course"
+    android:layout_height="@dimen/size_of_cirle_img_for_course">
+        <androidx.cardview.widget.CardView
+            android:layout_width="@dimen/size_of_cirle_img_for_course"
+            android:layout_height="@dimen/size_of_cirle_img_for_course"
+            app:cardCornerRadius="70dp">
+
+        <ImageView
+            android:layout_width="@dimen/size_of_cirle_img_for_course"
+            android:src="@drawable/ic_launcher_background"
+            android:scaleType="centerCrop"
+            android:layout_height="@dimen/size_of_cirle_img_for_course"/>
+
+
+        </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="25dp"
+        android:id="@+id/card_view_model_of_result_is_selected"
+        android:layout_height="25dp"
+        android:layout_alignParentBottom="true"
+        android:visibility="invisible"
+        android:layout_alignParentRight="true"
+        app:cardBackgroundColor="@color/light_green"
+        app:cardCornerRadius="70dp">
+        <ImageView
+            android:layout_margin="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_baseline_done_24"
+            />
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Создание сайта"
+            android:id="@+id/main_text_of_model_of_predlozenie"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:layout_marginVertical="10dp"
+            android:layout_alignParentBottom="true"
+
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</LinearLayout>

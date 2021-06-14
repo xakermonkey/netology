@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.CallLogFragment">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+
+
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Статистика расходов:"
+
+        android:id="@+id/second_activity_text_view2"
+
+        android:layout_marginTop="10dp"
+
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:textSize="24sp"
+        android:textColor="#FFFFFF"
+        />
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:elevation="10dp"
+        android:layout_marginHorizontal="20dp"
+        app:cardCornerRadius="15dp"
+        android:layout_margin="20dp"
+        android:id="@+id/second_activity_card_view_graf"
+
+        app:cardBackgroundColor="#F0787878"
+
+        >
+        <com.github.mikephil.charting.charts.HorizontalBarChart
+            android:id="@+id/chart1"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:background="#00787878"
+            android:layout_above="@+id/seekBar1" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Прогноз уровня спроса"
+
+        android:id="@+id/second_activity_text_view3"
+
+        android:layout_marginTop="10dp"
+
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:textSize="24sp"
+        android:textColor="#FFFFFF"
+        />
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:elevation="10dp"
+        android:layout_marginHorizontal="20dp"
+        app:cardCornerRadius="15dp"
+        android:layout_margin="20dp"
+        android:id="@+id/second_activity_card_view_graf2"
+
+        app:cardBackgroundColor="#F0787878"
+
+        >
+
+    </androidx.cardview.widget.CardView>
+
+
+
+
+
+</FrameLayout>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/input_settings_prof"
+    android:layout_margin="10dp"
+
+
+    >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Создание сайта"
+        android:textSize="18dp"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="15dp"
+
+        android:textColor="@color/white"
+        android:id="@+id/tv_for_name_of_many_coources_model"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="5dp"
+
+        android:text="Научись одной из самых восребованных вещей на фрилансе"
+        android:textColor="@color/white_trans"
+        android:id="@+id/tv_for_about_of_many_coources_model"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="10dp"
+        android:id="@+id/recycler_for_many_coures"
+
+        android:layout_marginBottom="5dp"
+        />
+
+
+
+
+
+</LinearLayout>

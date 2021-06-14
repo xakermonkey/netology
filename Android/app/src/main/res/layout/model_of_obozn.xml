@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="100dp"
+    android:layout_margin="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:id="@+id/lin_l_model_of_course_main"
+    android:layout_height="wrap_content">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_gravity="center"
+        android:layout_width="@dimen/size_of_cirle_img_for_course"
+        android:layout_height="@dimen/size_of_cirle_img_for_course"
+        app:cardCornerRadius="70dp">
+
+        <ImageView
+            android:layout_width="@dimen/size_of_cirle_img_for_course"
+            android:src="@drawable/ic_launcher_background"
+            android:scaleType="centerCrop"
+            android:id="@+id/img_for_model_of_course_image"
+            android:layout_height="@dimen/size_of_cirle_img_for_course"/>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="Java"
+        android:layout_marginHorizontal="10dp"
+        android:id="@+id/tv_for_model_of_course_name"
+        android:textColor="@color/white"
+
+        />
+
+    </LinearLayout>

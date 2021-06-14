@@ -1,0 +1,116 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">176dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="exo_error_message_height" tools:keep="@dimen/exo_error_message_height">40dp</dimen>
+    <dimen name="exo_error_message_text_size" tools:keep="@dimen/exo_error_message_text_size">20sp</dimen>
+    <dimen name="exo_settings_offset" tools:keep="@dimen/exo_settings_offset">30dp</dimen>
+    <dimen name="exo_icon_size">90dp</dimen>
+    <dimen name="controls_padding">170sp</dimen>
+    <dimen name="margin_main_fr">15dp</dimen>
+    <dimen name="margin_inside_main_fragment">10dp</dimen>
+    <dimen name="elevation_rv_element_main">5dp</dimen>
+    <dimen name="radius_cardv_recv_inside">10dp</dimen>
+    <dimen name="radius_black">1dp</dimen>
+    <dimen name="size_of_cirle_img_for_course">80dp</dimen>
+
+    <dimen name="content_inset">16dp</dimen>
+    <dimen name="content_inset_less">12dp</dimen>
+    <dimen name="content_inset_half">8dp</dimen>
+    <dimen name="content_inset_small">4dp</dimen>
+
+    <dimen name="text_size_small">10sp</dimen>
+
+    <dimen name="button_size">48dp</dimen>
+
+
+
+
+
+
+
+    <dimen name="margin_left_16">16dp</dimen>
+    <dimen name="margin_right_16">16dp</dimen>
+    <dimen name="margin_top_16">16dp</dimen>
+    <dimen name="margin_bottom_16">16dp</dimen>
+
+    <dimen name="margin_top_8">8dp</dimen>
+    <dimen name="margin_bottom_8">8dp</dimen>
+    <dimen name="margin_left_8">8dp</dimen>
+    <dimen name="margin_right_8">8dp</dimen>
+
+    <dimen name="margin_top_4">4dp</dimen>
+    <dimen name="margin_bottom_4">4dp</dimen>
+    <dimen name="margin_left_4">4dp</dimen>
+    <dimen name="margin_right_4">4dp</dimen>
+
+    <dimen name="radius_2">2dp</dimen>
+    <dimen name="radius_8">8dp</dimen>
+    <dimen name="radius_16">16dp</dimen>
+    <dimen name="radius_24">24dp</dimen>
+    <dimen name="radius_32">32dp</dimen>
+
+    <dimen name="padding_1">1dp</dimen>
+    <dimen name="padding_4">4dp</dimen>
+    <dimen name="padding_8">8dp</dimen>
+    <dimen name="padding_12">12dp</dimen>
+    <dimen name="padding_14">14dp</dimen>
+    <dimen name="padding_16">16dp</dimen>
+
+    <dimen name="text_16">16dp</dimen>
+    <dimen name="text_14">14dp</dimen>
+    <dimen name="text_12">12dp</dimen>
+    <dimen name="text_18">18dp</dimen>
+    <dimen name="text_20">20dp</dimen>
+    <dimen name="text_22">22dp</dimen>
+    <dimen name="text_24">24dp</dimen>
+    <dimen name="text_26">26dp</dimen>
+
+    <dimen name="dimen_1">1dp</dimen>
+    <dimen name="lineSpacingExtra_4">4dp</dimen>
+
+
+    <dimen name="viewportWidth">24.0</dimen>
+    <dimen name="viewportHeight">24.0</dimen>
+
+
+    <dimen name="vector_height">24dp</dimen>
+    <dimen name="vector_width">24dp</dimen>
+
+    <!--    <dimen name="design_bottom_navigation_text_size" tools:override="true">6dp</dimen>
+       <dimen name="design_bottom_navigation_active_text_size" tools:override="true">12dp</dimen>
+      <dimen name="design_bottom_navigation_height" tools:override="true">56dp</dimen>-->
+
+    <dimen name="image_header_dimen">300dp</dimen>
+    <dimen name="image_header_top_margin">50dp</dimen>
+    <dimen name="login_layout_padding">8dp</dimen>
+    <dimen name="login_layout_padding_top">36dp</dimen>
+    <dimen name="login_button_margin">16dp</dimen>
+
+    <dimen name="design_bottom_navigation_item_max_width" tools:override="true">400dp</dimen>
+    <dimen name="design_bottom_navigation_active_item_max_width" tools:override="true">400dp</dimen>
+    <dimen name="bottom_navigation_icon" tools:override="true">4dp</dimen>
+    <dimen name="bottom_navigation_text_size_active" tools:override="true">12dp</dimen>
+    <dimen name="bottom_navigation_text_size_inactive" tools:override="true">8dp</dimen>
+    <dimen name="design_bottom_navigation_icon_size" tools:override="true">6dp</dimen>
+    <dimen name="text_size_16">16sp</dimen>
+
+
+
+    <dimen name="dimen_8dp">8dp</dimen>
+    <dimen name="dimen_4dp">4dp</dimen>
+    <dimen name="dimen_24dp">24dp</dimen>
+    <dimen name="dimen_32dp">32dp</dimen>
+    <dimen name="dimen_30sp">30sp</dimen>
+    <dimen name="dimen_16dp">16dp</dimen>
+    <dimen name="dimen_48dp">48dp</dimen>
+    <dimen name="dimen_250dp">250dp</dimen>
+    <dimen name="dimen_300dp">300dp</dimen>
+    <dimen name="dimen_64dp">64dp</dimen>
+    <dimen name="dimen_32sp">32sp</dimen>
+    <dimen name="dimen_150dp">150dp</dimen>
+
+</resources>
