@@ -12,6 +12,7 @@ from django.http import JsonResponse
 
 locale.setlocale(locale.LC_ALL, "ru_RU")
 
+
 def get_persondata(request):
     data = PersonData.objects.filter(owner=request.user).first()
     if not data:
@@ -86,12 +87,13 @@ def register(request):
 
 
 def graph(request):
-
     if request.user.is_authenticated:
         persondata = get_persondata(request)
-        form = CalcForm({'prof_predmet': persondata.prof_predmet, 'hobbi': persondata.hobbi, 'want_prof': persondata.want_prof, 'want_spec': persondata.want_spec})
+        form = CalcForm(
+            {'prof_predmet': persondata.prof_predmet, 'hobbi': persondata.hobbi, 'want_prof': persondata.want_prof,
+             'want_spec': persondata.want_spec})
     else:
-        form =CalcForm()
+        form = CalcForm()
     data = list()
     for item in Kurses.objects.all():
         data.append({
@@ -112,7 +114,8 @@ def graph(request):
                              'bg': f'rgb({random.random() * 255},{random.random() * 255},{random.random() * 255})',
                              'source': item.name, 'target': i.name}
                 })
-        if item.category == 'Программирование' or item.name.lower().find('python') != -1 or item.name.lower().find('разработчик') != -1 or item.name.lower().find('программист') != -1:
+        if item.category == 'Программирование' or item.name.lower().find('python') != -1 or item.name.lower().find(
+                'разработчик') != -1 or item.name.lower().find('программист') != -1:
             for i in Spec.objects.all():
                 if 'Математика' in i.ege.all() or 'Информатика и ИКТ' in i.ege.all():
                     data.append({
@@ -120,7 +123,8 @@ def graph(request):
                                  'bg': f'rgb({random.random() * 255},{random.random() * 255},{random.random() * 255})',
                                  'source': item.name, 'target': i.name}
                     })
-        if item.category == 'Бизнес и управление' or item.name.lower().find('бизн') != -1 or item.name.lower().find('менедж') != -1:
+        if item.category == 'Бизнес и управление' or item.name.lower().find('бизн') != -1 or item.name.lower().find(
+                'менедж') != -1:
             for i in Spec.objects.all():
                 if 'Обществознание' in i.ege.all():
                     data.append({
@@ -128,7 +132,8 @@ def graph(request):
                                  'bg': f'rgb({random.random() * 255},{random.random() * 255},{random.random() * 255})',
                                  'source': item.name, 'target': i.name}
                     })
-        if item.category == 'Дизайн и UX' or item.name.lower().find('диза') != -1 or item.name.lower().find('ui') != -1 or item.name.lower().find('ux') != -1:
+        if item.category == 'Дизайн и UX' or item.name.lower().find('диза') != -1 or item.name.lower().find(
+                'ui') != -1 or item.name.lower().find('ux') != -1:
             for i in Spec.objects.all():
                 if 'Литература' in i.ege.all() or 'История' in i.ege.all():
                     data.append({
@@ -139,7 +144,7 @@ def graph(request):
 
     for item in Spec.objects.all():
         data.append({
-            'data': {'id': item.name,'url':item.url,
+            'data': {'id': item.name, 'url': item.url,
                      'bg': f'rgb({random.random() * 255},{random.random() * 255},{random.random() * 255})'}
         })
         for prof in item.prof.all():
@@ -150,10 +155,12 @@ def graph(request):
             })
     for item in Profession.objects.all():
         data.append({
-            'data': {'id': item.name, 'url':item.url,
+            'data': {'id': item.name, 'url': item.url,
                      'bg': f'rgb({random.random() * 255},{random.random() * 255},{random.random() * 255})'}
         })
-    return render(request, 'graph.html', {'data': data, 'form': form, 'spec':Spec.objects.all(), 'prof':Profession.objects.all(), 'ege':Ege.objects.all()})
+    return render(request, 'graph.html',
+                  {'data': data, 'form': form, 'spec': Spec.objects.all(), 'prof': Profession.objects.all(),
+                   'ege': Ege.objects.all()})
 
 
 def math(request):
@@ -163,20 +170,129 @@ def math(request):
         pred = list()
         special = list()
         ret_prof = list()
-        for item in request.POST['want_prof[]']:
-            prof.append(Profession.objects.get(pk=int(item)))
-        for item in request.POST['want_spec[]']:
-            spec.append(Spec.objects.get(pk=int(item)))
-        for item in request.POST['pred[]']:
-            pred.append(Ege.objects.get(id=int(item)).name)
-        for item in spec:
-            for i in pred:
-                if not i.name in item.ege:
-                    break
-                special.append(item.name)
+        data = list()
+        for item in request.POST:
+            if item.startswith('want_spec'):
+                spec.append(Spec.objects.get(pk=int(item.split('_')[2])))
+            if item.startswith('want_prof'):
+                prof.append(Profession.objects.get(pk=int(item.split('_')[2])))
+            if item.startswith('prof_predmet'):
+                pred.append(Ege.objects.get(pk=int(item.split('_')[2])))
+        for item in pred:
+            data.append({
+                'data': {'id': item.name,
+                         'bg': f'rgb({random.random() * 255},{random.random() * 255},{random.random() * 255})'}
+            })
+            for i in spec:
+                if item in i.ege.all():
+                    data.append({
+                        'data': {'id': item.name + '_' + i.name,
+                                 'bg': f'rgb({random.random() * 255},{random.random() * 255},{random.random() * 255})',
+                                 'source': item.name, 'target': i.name}
+                    })
+                    special.append(i)
+            for i in Kurses.objects.all():
+                if i.category == 'Программирование' or i.name.lower().find(
+                        'python') != -1 or i.name.lower().find(
+                        'разработчик') != -1 or i.name.lower().find('программист') != -1 and (item.name == 'Математика' or item.name =='Информатика и ИКТ'):
+                            data.append({
+                                'data': {'id': item.name + '_' + i.name,
+                                         'bg': f'rgb({random.random() * 255},{random.random() * 255},{random.random() * 255})',
+                                         'source': item.name, 'target': i.name}
+                            })
+                            data.append({
+                                'data': {'id': i.name,
+                                         'bg': f'rgb({random.random() * 255},{random.random() * 255},{random.random() * 255})'}
+                            })
+                if i.category == 'Бизнес и управление' or i.name.lower().find(
+                        'бизн') != -1 or i.name.lower().find(
+                        'менедж') != -1 and item.name == 'Обществознание':
+                            data.append({
+                                'data': {'id': item.name + '_' + i.name,
+                                         'bg': f'rgb({random.random() * 255},{random.random() * 255},{random.random() * 255})',
+                                         'source': item.name, 'target': i.name}
+                            })
+                            data.append({
+                                'data': {'id': i.name,
+                                'bg': f'rgb({random.random() * 255},{random.random() * 255},{random.random() * 255})'}
+                })
+                if i.category == 'Дизайн и UX' or i.name.lower().find('диза') != -1 or i.name.lower().find(
+                        'ui') != -1 or i.name.lower().find('ux') != -1 and (item.name == 'Литература' or item.name =='История'):
+                            data.append({
+                                'data': {'id': item.name + '_' + i.name,
+                                         'bg': f'rgb({random.random() * 255},{random.random() * 255},{random.random() * 255})',
+                                         'source': item.name, 'target': i.name}
+                            })
+                            data.append({
+                                'data': {'id': i.name,
+                                         'bg': f'rgb({random.random() * 255},{random.random() * 255},{random.random() * 255})'}
+                            })
         for item in special:
-            for i in item.prof:
-                if i.name in prof:
-                    ret_prof.append(i.name)
-        data = {'ege': pred, 'spec': special, 'prof': ret_prof}
-        return JsonResponse(data)
+            data.append({
+                'data': {'id': item.name, 'url': item.url,
+                         'bg': f'rgb({random.random() * 255},{random.random() * 255},{random.random() * 255})'}
+            })
+            for i in Kurses.objects.all():
+                if i.category == 'Программирование' and (item.name.lower().find(
+                        'python') != -1 or item.name.lower().find(
+                        'разработчик') != -1 or item.name.lower().find('программист') != -1):
+                            data.append({
+                                'data': {'id': item.name + '_' + i.name,
+                                         'bg': f'rgb({random.random() * 255},{random.random() * 255},{random.random() * 255})',
+                                         'source': i.name, 'target': item.name}
+                            })
+                            data.append({
+                                'data': {'id': i.name,
+                                         'bg': f'rgb({random.random() * 255},{random.random() * 255},{random.random() * 255})'}
+                            })
+                if i.category == 'Бизнес и управление' and (item.name.lower().find(
+                        'бизн') != -1 or item.name.lower().find(
+                        'менедж') != -1):
+                            data.append({
+                                'data': {'id': item.name + '_' + i.name,
+                                         'bg': f'rgb({random.random() * 255},{random.random() * 255},{random.random() * 255})',
+                                         'source': i.name, 'target': item.name}
+                            })
+                            data.append({
+                                'data': {'id': i.name,
+                                'bg': f'rgb({random.random() * 255},{random.random() * 255},{random.random() * 255})'}
+                })
+                if i.category == 'Дизайн и UX' and (item.name.lower().find('диза') != -1 or item.name.lower().find(
+                        'ui') != -1 or item.name.lower().find('ux') != -1):
+                            data.append({
+                                'data': {'id': item.name + '_' + i.name,
+                                         'bg': f'rgb({random.random() * 255},{random.random() * 255},{random.random() * 255})',
+                                         'source': i.name, 'target': item.name}
+                            })
+                            data.append({
+                                'data': {'id': i.name,
+                                         'bg': f'rgb({random.random() * 255},{random.random() * 255},{random.random() * 255})'}
+                            })
+            for i in prof:
+                if i in item.prof.all():
+                    data.append({
+                        'data': {'id': i.name, 'url': i.url,
+                                 'bg': f'rgb({random.random() * 255},{random.random() * 255},{random.random() * 255})'}
+                    })
+                    data.append({
+                        'data': {'id': item.name + '_' + i.name,
+                                 'bg': f'rgb({random.random() * 255},{random.random() * 255},{random.random() * 255})',
+                                 'source': item.name, 'target': i.name}
+                    })
+        return JsonResponse({'data': data})
+
+
+def create(request):
+    if request.method == 'POST':
+        plan = get_plan(request)
+        plan.kurses.add(Kurses.objects.get(name='Цифровой маркетинг'))
+        plan.kurses.add(Kurses.objects.get(name='DataOps-инженер'))
+        plan.spec.add(Spec.objects.get(name='Информатика и вычислительная техника'))
+        plan.spec.add(Spec.objects.get(name='Информационные системы и технологии'))
+        plan.prof.add(Profession.objects.get(name='Специалист по системам безопасности'))
+        plan.save()
+        if request.user.is_authenticated:
+            data = {'ok': True}
+        else:
+            data = {'ok': False}
+    return JsonResponse(data)

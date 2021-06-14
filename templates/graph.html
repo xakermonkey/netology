@@ -4,9 +4,16 @@
 
 
 {% block content %}
+    <style type="text/css">
+    li {
+        list-style-type: none;
+    }
+    </style>
     <header class="page-header page-header-dark bg-gradient-primary-to-secondary">
         <div class="page-header-content pt-10" style="padding-top: 1rem !important;">
+        <a id="create" style="display: none" class="text-light btn-teal btn rounded-pill px-4 ml-lg-4 mt-3">Сохранить учебный план</a>
         <div id="cy" style="border-radius: 0.5rem; width: 100%; height: 900px; position: absolute"></div>
+
 {#            <div class="container">#}
 {#                <div class="row align-items-center">#}
                 <div align="right">
@@ -22,7 +29,7 @@
                                             {% for item in ege %}
                                                 <li>
                                                     <label for="id_prof_predmet_{{ item.id }}">
-                                                        <input type="checkbox" name="prof_predmet" value="{{ item.id }}"
+                                                        <input type="checkbox" class="pred" name="prof_predmet_{{ item.id }}" value="{{ item.id }}"
                                                                id="id_prof_predmet_{{ item.id }}"> {{ item.name }}
                                                     </label>
                                                 </li>
@@ -39,8 +46,8 @@
                                         <ul id="id_want_prof">
                                             {% for item in prof %}
                                                 <li>
-                                                    <label for="id_want_prof_{{ item.id }}"><input type="checkbox"
-                                                                                                   name="want_prof"
+                                                    <label for="id_want_prof_{{ item.id }}"><input class="prof" type="checkbox"
+                                                                                                   name="want_prof_{{ item.id }}"
                                                                                                    value="{{ item.id }}"
                                                                                                    id="id_want_prof_{{ item.id }}"> {{ item.name }}
                                                     </label>
@@ -54,10 +61,10 @@
                                         <ul id="id_want_spec">
                                             {% for item in spec %}
                                                 <li>
-                                                    <label for="id_want_spec_{{ item.id }}"><input type="checkbox"
-                                                                                                   name="want_spec"
+                                                    <label for="id_want_spec_{{ item.id }}"><input class="spec" type="checkbox"
+                                                                                                   name="want_spec_{{ item.id }}"
                                                                                                    value="{{ item.id }}"
-                                                                                                   id="id_want_prof_{{ item.id }}"> {{ item.name }}
+                                                                                                   id="id_want_spec_{{ item.id }}"> {{ item.name }}
                                                     </label>
                                                 </li>
                                             {% endfor %}
@@ -147,41 +154,97 @@
 
             $('#submit').click(function () {
                 let data = {'csrfmiddlewaretoken': $('input[type="hidden"]').val()};
-                let want_spec = new Array();
-                let want_prof = new Array();
-                let pred = new Array();
-                $('input[name="want_spec"]').each(function () {
+                $('input.spec').each(function () {
                    if($(this).is(':checked')){
-                       want_spec.push($(this).val())
+                       data[$(this).attr('name')] = $(this).attr('name');
                    }
                 });
-                $('input[name="want_prof"]').each(function () {
+                $('input.prof').each(function () {
                    if($(this).is(':checked')){
-                       want_prof.push($(this).val())
+                       data[$(this).attr('name')] = $(this).attr('name');
                    }
                 });
-                $('input[name="prof_predmet"]').each(function () {
+                $('input.pred').each(function () {
                    if($(this).is(':checked')){
-                       pred.push($(this).val())
+                       data[$(this).attr('name')] = $(this).attr('name');
                    }
                 });
-                data['want_prof'] = want_prof;
-                data['want_spec'] = want_spec;
-                data['pred'] = pred;
                 data['hobbi'] = $('#id_hobbi').val();
                 $.ajax({
                     url: 'math/',
                     type: 'POST',
                     data: data,
                     success: function (data) {
-                        for (var item in data['pred']){
-                            cy.$('node').each( function(){
-                                if ($(this).id() !== item){
-                                    $(this).hidden()
+                        console.log(data);
+                            {#cy.removeData();#}
+                        cy.destroy();
+                        cy = cytoscape({
+                            container: $('#cy'),
+
+                            elements: data['data'],
+
+                            style: [{
+                                selector: 'node',
+                                style: {
+                                    'background-color': 'data(bg)',
+                                    'shape': 'star'
                                 }
-                            });
+                            },
+                                {
+                                    selector: 'edge',
+                                    style: {
+                                        'width': 5,
+                                        'line-color': 'data(bg)',
+                                        'target-arrow-color': 'data(bg)',
+                                        'target-arrow-shape': 'triangle',
+                                        'curve-style': 'bezier'
+                                    }
+                                },
+                                {
+                                    selector: 'label',
+                                    style: {
+                                        'color': 'white'
+                                    }
+                                }
+                            ],
+                            layout: {
+                                name: 'circle',
+                                fit: false
+                            },
+                        });
+
+                        cy.on('click', 'node', function (evt) {
+                            var node = evt.target;
+                            if (node.style().label !== '') {
+                                node.style({
+                                    label: ''
+                                })
+                            } else {
+                                node.style({
+                                    label: node.id()
+                                })
+                            }
+                        })
+                        $('#create').show()
+                        $('#create').click(function () {
+                            let data = {'csrfmiddlewaretoken': $('input[type="hidden"]').val()};
+                            cy.nodes().each(function (el) {
+                                console.log(el);
+                            })
+                            $.ajax({
+                                url:'create_plan/',
+                                type:'POST',
+                                data:data,
+                                success: function (data) {
+                                        if (data['ok']) {
+                                            return location.href = location.origin + '/lk';
+                                        }else{
+                                            return location.href = location.origin + '/login';
+                                        }
+                                }
+                            })
+                        })
                         }
-                    }
                 })
             });
         });
