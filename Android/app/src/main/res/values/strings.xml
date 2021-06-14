@@ -1,0 +1,127 @@
+<resources>
+    <string name="app_name">POLIGON</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+
+
+    <array name="menuOptions">
+        <item>Обучение</item>
+        <item>Мои друзья</item>
+        <item>Соревнования</item>
+        <item>Карта перспектив</item>
+        <item>Настройки</item>
+    </array>
+
+
+    <string name="video_resize_crop">Crop</string>
+
+    <string name="video_orientation_video">Video orientation</string>
+    <string name="video_orientation_sensor">Auto-rotate</string>
+
+    <string name="onboarding_open_title">Choose a video to play</string>
+    <string name="onboarding_open_description">Tap to open a video file. Long tap to load external subtitles.</string>
+
+    <string name="open_subtitles">Load subtitles</string>
+
+    <string name="error_details">Details</string>
+    <string name="error_files_missing">Files app is disabled or missing</string>
+
+    <string name="subtitles_scope">To automatically load external subtitles, grant %s access to the topmost folder containing your videos (e.g. Movies).</string>
+
+    <plurals name="quick_seek_x_second">
+        <item quantity="other">%d sekundi</item>
+        <item quantity="one">%d sekunda</item>
+        <item quantity="few">%d sekunde</item>
+    </plurals>
+
+
+    <string name="q1">Which famous person does Phoebe believe is her grandfather?</string>
+    <string name="q2">Who among the following belong to the Targaryen family?</string>
+    <string name="q3">What is Sheldon\'s middle name in The Big Bang Theory?</string>
+    <string name="q4">In the Television series Silicon Valley, what is Pied Piper?</string>
+    <string name="q5">Which of the following are the names of fictional characters from Dan Brown novels?</string>
+    <string name="q6">What color is \"The Incredible Hulk\"?</string>
+    <string name="q7">How many seasons are there in the TV series Breaking Bad?</string>
+
+    <string name="q1_option1">Русский язык</string>
+    <string name="q1_option2">Математика</string>
+    <string name="q1_option3">Химия</string>
+    <string name="q1_option4">Физика</string>
+    <string name="q1_option5">Литература</string>
+    <string name="q1_option6">История</string>
+    <string name="q1_option7">Биология</string>
+    <array name="q1_options">
+        <item>@string/q1_option1</item>
+        <item>@string/q1_option2</item>
+        <item>@string/q1_option3</item>
+        <item>@string/q1_option4</item>
+        <item>@string/q1_option5</item>
+        <item>@string/q1_option6</item>
+        <item>@string/q1_option7</item>
+    </array>
+
+    <string name="q2_option1">Event-менеджер</string>
+    <string name="q2_option2">Html-верстальщик</string>
+    <string name="q2_option3">IT-менеджер</string>
+    <string name="q2_option4">IT-специалист</string>
+    <string name="q2_option5">Mobile-разработчик</string>
+    <string name="q2_option6">PR-менеджер</string>
+    <array name="q2_options">
+        <item>@string/q2_option1</item>
+        <item>@string/q2_option2</item>
+        <item>@string/q2_option3</item>
+        <item>@string/q2_option4</item>
+        <item>@string/q2_option5</item>
+        <item>@string/q2_option6</item>
+    </array>
+
+
+    <string name="q3_answer">Lee</string>
+
+    <string name="q4_option1">A book</string>
+    <string name="q4_option2">A scary story</string>
+    <string name="q4_option3">A song</string>
+    <string name="q4_option4">A company</string>
+    <string name="q4_option5">A bank</string>
+    <array name="q4_options">
+        <item>@string/q4_option1</item>
+        <item>@string/q4_option2</item>
+        <item>@string/q4_option3</item>
+        <item>@string/q4_option4</item>
+        <item>@string/q4_option5</item>
+    </array>
+
+    <string name="q5_option1">Sophie Neveu</string>
+    <string name="q5_option2">Vittoria Vetra</string>
+    <string name="q5_option3">Nick Adams</string>
+    <string name="q5_option4">Robert Langdon</string>
+    <array name="q5_options">
+        <item>@string/q5_option1</item>
+        <item>@string/q5_option2</item>
+        <item>@string/q5_option3</item>
+        <item>@string/q5_option4</item>
+    </array>
+
+    <string name="q6_option1">Purple</string>
+    <string name="q6_option2">Green</string>
+    <string name="q6_option3">Blue</string>
+    <string name="q6_option4">Grey</string>
+    <array name="q6_options">
+        <item>@string/q6_option1</item>
+        <item>@string/q6_option2</item>
+        <item>@string/q6_option3</item>
+        <item>@string/q6_option4</item>
+    </array>
+
+
+    <string name="q7_answer">5</string>
+
+</resources>

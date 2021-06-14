@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/gray"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Выберите интересующие направления"
+        android:gravity="center"
+        android:textSize="30dp"
+        android:id="@+id/dasdsd"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentBottom="true"
+        android:text="Подтвердить выбор"
+        android:background="@drawable/red2_style"
+        android:layout_margin="15dp"
+        android:textColor="@color/white"
+        android:id="@+id/btn_enter"
+        android:gravity="center"
+        android:textSize="30sp" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/recycler_for_chouse_finish_result"
+        android:layout_marginHorizontal="10dp"
+
+        android:layout_below="@id/dasdsd"/>
+
+        /></RelativeLayout>

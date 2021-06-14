@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/gray_transp"
+
+     android:clickable="true"
+
+   >
+
+
+
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/gray_transp"
+
+        >
+
+
+
+
+
+
+    <SeekBar
+        android:id="@+id/seeker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnPlayPause"
+        android:layout_marginBottom="@dimen/content_inset_small" />
+
+    <TextView
+        android:id="@+id/position"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_toRightOf="@id/btnPlayPause"
+          android:textColor="#fff"
+        android:layout_above="@id/seeker"
+        android:textSize="@dimen/text_size_small"
+        tools:text="00:00" />
+
+    <TextView
+        android:id="@+id/duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_toRightOf="@id/position"
+        android:layout_above="@id/seeker"
+
+        android:fontFamily="sans-serif"
+        android:textColor="#fff"
+        android:textSize="@dimen/text_size_small"
+        tools:text="-05:00" />
+
+
+
+
+    <ImageButton
+        android:id="@+id/btnPlayPause"
+        android:layout_width="@dimen/button_size"
+        android:layout_height="@dimen/button_size"
+
+        android:layout_alignParentTop="true"
+
+
+        android:background="?selectableItemBackground"
+        android:src="@drawable/evp_action_play"
+        tools:ignore="ContentDescription" />
+        <ImageButton
+        android:id="@+id/btnSetting"
+        android:layout_width="@dimen/button_size"
+        android:layout_height="@dimen/button_size"
+             android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@id/btnFullScreen"
+
+            android:background="?selectableItemBackground"
+        android:src="@drawable/ic_baseline_settings_24"
+        tools:ignore="ContentDescription" />
+     <ImageButton
+        android:id="@+id/btnFullScreen"
+
+        android:layout_width="@dimen/button_size"
+        android:layout_height="@dimen/button_size"
+         android:layout_alignParentTop="true"
+         android:layout_alignParentRight="true"
+
+        android:background="?selectableItemBackground"
+        android:src="@drawable/ic_baseline_fullscreen_24"
+        tools:ignore="ContentDescription" />
+
+
+
+    </RelativeLayout>
+</RelativeLayout>

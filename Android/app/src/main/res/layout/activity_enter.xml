@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+     >
+  <me.ibrahimsn.particle.ParticleView
+      android:id="@+id/particleView"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      app:particleCount="60"
+      app:particleMinRadius="3"
+      app:particleMaxRadius="10"
+      app:particlesBackgroundColor="#23262a"
+      app:particleColor="@android:color/holo_orange_dark"
+      app:particleLineColor="@android:color/holo_orange_light"
+      app:particleLinesEnabled="true" />
+  <ScrollView
+      android:layout_margin="20dp"
+      android:id="@+id/scroll"
+      android:background="@drawable/orange_style"
+      android:layout_centerInParent="true"
+      android:layout_width="match_parent"
+      android:layout_height="605dp"
+      >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:orientation="vertical"
+        android:padding="5dp">
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="Вход"
+          android:textColor="@color/white"
+
+          android:textSize="36dp"
+          android:textAlignment="center"
+          android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+
+
+
+
+
+
+
+      <EditText
+          android:id="@+id/reg_email_et"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:drawableLeft="@drawable/ic_baseline_alternate_email_24"
+          android:drawablePadding="@dimen/padding_16"
+          android:background="@drawable/edit_style"
+          android:hint="Email"
+          android:layout_marginTop="40dp"
+          android:layout_marginBottom="@dimen/margin_top_8"
+          android:layout_marginLeft="@dimen/margin_right_16"
+          android:layout_marginRight="@dimen/margin_right_16"
+          android:maxLines="1"
+          android:padding="@dimen/padding_16"
+          android:textColor="@color/white"
+          android:textColorHint="@color/white"
+          android:textSize="@dimen/text_20" />
+
+
+
+      <EditText
+          android:id="@+id/al_dial_edit_t_password"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:drawableLeft="@drawable/ic_baseline_password_24"
+          android:drawablePadding="@dimen/padding_16"
+          android:background="@drawable/edit_style"
+          android:hint="Пароль"
+          android:layout_marginTop="@dimen/margin_top_8"
+          android:layout_marginBottom="@dimen/margin_top_8"
+          android:layout_marginLeft="@dimen/margin_right_16"
+          android:layout_marginRight="@dimen/margin_right_16"
+          android:inputType="textPassword"
+          android:maxLines="1"
+          android:padding="@dimen/padding_16"
+          android:textColor="@color/white"
+          android:textColorHint="@color/white"
+          android:textSize="@dimen/text_20" />
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+        android:orientation="vertical"
+          android:visibility="gone"
+
+          android:id="@+id/lin_l_for_show_for_registration"
+        >
+
+      <EditText
+          android:id="@+id/reg_password_et_second"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:drawableLeft="@drawable/ic_baseline_password_24"
+          android:drawablePadding="@dimen/padding_16"
+          android:background="@drawable/edit_style"
+          android:hint="Повторите пароль"
+          android:layout_marginTop="@dimen/margin_top_8"
+          android:layout_marginBottom="@dimen/margin_top_8"
+          android:layout_marginLeft="@dimen/margin_right_16"
+          android:layout_marginRight="@dimen/margin_right_16"
+          android:inputType="textPassword"
+          android:maxLines="1"
+
+          android:padding="@dimen/padding_16"
+          android:textColor="@color/white"
+          android:textColorHint="@color/white"
+          android:textSize="@dimen/text_20" />
+
+      <EditText
+
+          android:id="@+id/al_dial_edit_t_name"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:background="@drawable/edit_style"
+          android:drawableLeft="@drawable/ic_baseline_person_24_wite"
+          android:drawablePadding="@dimen/padding_16"
+          android:hint="Имя пользователя"
+          android:layout_marginTop="@dimen/margin_top_8"
+          android:layout_marginBottom="@dimen/margin_top_8"
+          android:layout_marginLeft="@dimen/margin_right_16"
+          android:layout_marginRight="@dimen/margin_right_16"
+          android:inputType="text"
+          android:maxLength="30"
+          android:maxLines="1"
+          android:padding="@dimen/padding_16"
+          android:textColor="@color/white"
+          android:textColorHint="@color/white"
+          android:textSize="@dimen/text_20" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top_8"
+            android:layout_marginBottom="@dimen/margin_top_8"
+            android:layout_marginLeft="@dimen/margin_right_16"
+            android:layout_marginRight="@dimen/margin_right_16"
+            android:background="@drawable/red2_style"
+            android:text="зарегистрироваться"
+            android:id="@+id/al_dial_get_s_d_register_btn"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/text_20" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_margin="16dp"
+            android:layout_height="wrap_content">
+          <View
+              android:layout_weight="1"
+              android:layout_width="0dp"
+              android:layout_height="1dp"
+              android:layout_gravity="center_vertical"
+              android:background="@color/grey"/>
+          <TextView
+              android:layout_weight="0.5"
+              android:layout_gravity="center"
+              android:layout_width="0dp"
+              android:gravity="center"
+              android:textSize="18sp"
+
+              android:layout_height="wrap_content"
+              android:text="или"
+              android:textColor="@color/grey"/>
+          <View
+              android:layout_weight="1"
+              android:layout_width="0dp"
+              android:layout_gravity="center_vertical"
+
+              android:layout_height="1dp"
+              android:background="@color/grey"/>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/already_have_account_registration_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginTop="16dp"
+
+
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:text="Уже есть аккаунт?"/>
+
+
+
+
+      </LinearLayout>
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="250dp"
+          android:id="@+id/lin_l_for_hide_for_registration"
+          android:orientation="vertical">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top_8"
+            android:layout_marginBottom="@dimen/margin_top_8"
+            android:layout_marginLeft="@dimen/margin_right_16"
+            android:layout_marginRight="@dimen/margin_right_16"
+            android:background="@drawable/red2_style"
+            android:text="войти"
+            android:id="@+id/al_dial_get_s_d_enter_btn"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/text_20" />
+
+
+
+
+        <TextView
+            android:id="@+id/enter_act_registration_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginTop="16dp"
+
+
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:text="Не зарегистрированы? Создайте аккаунт"/>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_margin="16dp"
+            android:layout_height="wrap_content">
+          <View
+              android:layout_weight="1"
+              android:layout_width="0dp"
+              android:layout_height="1dp"
+              android:layout_gravity="center_vertical"
+              android:background="@color/grey"/>
+          <TextView
+              android:layout_weight="0.5"
+              android:layout_gravity="center"
+              android:layout_width="0dp"
+              android:gravity="center"
+              android:textSize="18sp"
+
+              android:layout_height="wrap_content"
+              android:text="или"
+              android:textColor="@color/grey"/>
+          <View
+              android:layout_weight="1"
+              android:layout_width="0dp"
+              android:layout_gravity="center_vertical"
+
+              android:layout_height="1dp"
+              android:background="@color/grey"/>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/enter_like_guest_registration_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginTop="16dp"
+
+
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:text="Войти как гость"/>
+
+
+
+
+      </LinearLayout>
+    </LinearLayout>
+
+  </ScrollView>
+
+
+</RelativeLayout>
